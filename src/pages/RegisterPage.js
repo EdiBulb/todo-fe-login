@@ -25,11 +25,10 @@ const RegisterPage = () => {
         throw new Error("패스워드가 일치하지 않습니다. 다시 입력")
       }
       //일치한다면, api 호출하기
-      console.log("시작됨")
-      console.log("sending to server: ", { name, email, password, headers: api.defaults.headers
-});
+      console.log("sending to server: ", { name, email, password, headers: api.defaults.headers});
 
       const response = await api.post('/user',{name, email, password}) // 회원가입이라서 post
+      console.log("테스트")
       // 회원가입 성공 시, 로그인 페이지로 넘어가기
       if(response.status == 200){
         //navigate로 옮겨준다.
