@@ -11,7 +11,7 @@ if (token) {
 }
 
 const api = axios.create({
-  baseURL: `${process.env.REACT_APP_BACKEND_URL}/api`,
+  baseURL: `${process.env.REACT_APP_BACKEND_PROXY}/api`,
   headers
 });
 /**
@@ -29,7 +29,6 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => {
-    console.log("Response:", response);
     return response;
   },
   function (error) {
