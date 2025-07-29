@@ -29,16 +29,12 @@ api.interceptors.request.use(
 
 api.interceptors.response.use(
   (response) => {
+    console.log("Response:", response);
     return response;
   },
   function (error) {
-    const res = error.response;
-    console.log("❌ RESPONSE ERROR:", {
-      status: res?.status,
-      data: res?.data,
-      message: res?.data?.error || res?.data?.message || res?.data,
-    });
-
+    error = error.response.data;
+    console.log("RESPONSE ERROR", error);
     return Promise.reject(error);
   }
 );
