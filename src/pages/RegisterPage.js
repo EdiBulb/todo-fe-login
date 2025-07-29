@@ -38,15 +38,7 @@ const RegisterPage = () => {
         throw new Error(response.data.error)
       }
     } catch (error) {
-  console.error("❌ Catch Error:", error);
-
-  const message =
-    error.response?.data?.error?.message ||
-    error.response?.data?.error ||
-    error.response?.data?.message ||
-    error.message;
-
-  setError(message || "Something went wrong.");
+      setError(error.message);
 
 }
     

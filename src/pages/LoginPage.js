@@ -26,23 +26,18 @@ const LoginPage = () => {
       if(response.status === 200){
         console.log("로그인 성공", response.data)
         setUser(response.data.user)
-        sessionStorage.setItem("token", response.data.token); // 토큰값 저장
+        sessionStorage.setItem("token", response.data.token); // session storage에 토큰값 저장
+        // headers에 토근 전달
         api.defaults.headers["authorization"] = "Bearer "+response.data.token
         setError("")
-        navigate("/")
+        navigate("/") // 로그인 후 todo page로 이동
       }
       // throw new Error(response.message)
+      // throw new Error(response.data.error)
 
     }catch(error){
       console.error("로그인 실패:", error)
-      const message = 
-      error.response?.data?.message ||
-      error.response?.data?.error ||
-      error.message ||
-      "Something went wrong";
-
-      setError(message)
-
+      setError(error.message);
     }
   }
 
