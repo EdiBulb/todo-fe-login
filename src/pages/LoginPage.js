@@ -41,8 +41,8 @@ const LoginPage = () => {
       // throw new Error(response.data.error)
 
     }catch(error){
-      console.error("로그인 실패:", error)
-      setError(error.message);
+      const message = error.response?.data?.message || error.message || "오류가 발생했습니다.";
+      setError(message);
     }
   }
 

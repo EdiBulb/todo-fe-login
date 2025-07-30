@@ -43,7 +43,8 @@ const RegisterPage = () => {
         throw new Error(response.data.error)
       }
     } catch (error) {
-      setError(error.message);
+      const message = error.response?.data?.message || error.message || "오류가 발생했습니다.";
+      setError(message);
 
 }
     
