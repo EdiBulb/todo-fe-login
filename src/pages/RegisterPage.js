@@ -20,7 +20,12 @@ const RegisterPage = () => {
   const handleSubmit= async (event)=>{
     event.preventDefault() // 페이지를 reload 안해주기 위해서
     try{
-        // password와 secPassword가 같은지 확인
+      // 입력되었는지 확인
+      if (!name || !email || !password || !secPassword) {
+        setError("모든 필드를 입력해주세요.");
+        return;
+      }
+      // password와 secPassword가 같은지 확인
       if(password !==secPassword){
         throw new Error("패스워드가 일치하지 않습니다. 다시 입력")
       }

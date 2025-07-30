@@ -19,6 +19,11 @@ const LoginPage = () => {
     // refresh 방지임
     event.preventDefault()
     try{
+      //입력값 검사
+      if (!email || !password) {
+      setError("이메일과 비밀번호를 모두 입력해주세요.");
+      return;
+      }
       //로그인을 하기 위한 api 호출
       //로그인도 post를 쓴다. 왜냐? req.body를 써야하기 때문임 - password를 url에 넣으면 안되므로
       const response = await api.post('/user/login', {email, password})
