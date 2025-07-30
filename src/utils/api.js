@@ -3,7 +3,8 @@ import axios from "axios";
 const token = localStorage.getItem("token");
 
 const headers = {
-  "Content-Type": "application/json"
+  "Content-Type": "application/json",
+  authorization: "Bearer " + sessionStorage.getItem("token")
 };
 
 if (token) {

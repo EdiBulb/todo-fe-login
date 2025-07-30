@@ -3,15 +3,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import api from "../utils/api"
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = ({user, setUser}) => {
   // 입력된 값을 가져오기
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("")
-  // 유저 정보 저장을 위한 state
-  const [user, setUser] = useState(null)
+  // // 유저 정보 저장을 위한 state
+  // const [user, setUser] = useState(null)
 
   const navigate = useNavigate()
 
@@ -46,6 +46,10 @@ const LoginPage = () => {
     }
   }
 
+  // 유저가 있다면 /로 이동한다.
+  if(user){
+    return <Navigate to="/"/>
+  }
   return (
     <div className="display-center">
       {error && <div className="red-error">{error}</div>}
